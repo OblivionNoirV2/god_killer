@@ -280,7 +280,8 @@ export function bossAttackAlgo(attackProps: BossAttackProps) {
     //use a randomizer and set the max to the sum of all the weights
 
     /*GALAXY BRAIN TIME*/
-    function Targeting() {
+    function Targeting() 
+    {
         //Get max range for the randomizer
         const total_weights = filtered_weights.reduce((a, b) => a + b, 0);
         //Get a random value between 1 and the total weights
@@ -312,31 +313,29 @@ export function bossAttackAlgo(attackProps: BossAttackProps) {
                 }
             ));
         //*brain explosion sound effects*//
-        for (let weight of weights_with_cumulative) {
+        for (let weight of weights_with_cumulative) 
+        {
             //Compare the value from above to the cumulative weight 
             //The higher the individual weight, the higher the chance
             //it has to hit
 
-            if (random_value <= weight.cumulative_weight && weight !== undefined) {
-                if (potential_targets[weight.index] !== undefined) {
+            if (random_value <= weight.cumulative_weight && weight !== undefined) 
+            {
+                if (potential_targets[weight.index] !== undefined)
+                {
                     chosen_target = potential_targets[weight.index];
-
                 }
                 break;
             }
         }
     }
-
     //use event listeners to determine when certain attacks are eligible
     //Then determine current moveset and weights for each move...
     DetermineWeights();
     Targeting();
-
-
     //He will only use this if everyone's mp is lower than their hp
     //MP must be <= 25% of max hp
     let inversion_eligible: boolean = false;
-
     /*
     First check conditionals for special attacks. 
     If any are met, set the moveset probabilities accordingly so 
@@ -345,8 +344,6 @@ export function bossAttackAlgo(attackProps: BossAttackProps) {
     After that, just do it based on a simple range. 
     Ie the range it falls into determines his attack  
     */
-
-
     function CheckForInversion() {
 
         //first 
